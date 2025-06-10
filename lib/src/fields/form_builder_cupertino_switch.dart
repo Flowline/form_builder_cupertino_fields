@@ -294,7 +294,7 @@ class FormBuilderCupertinoSwitch extends FormBuilderField<bool> {
   /// [CupertinoColors.destructiveRed] coloring and medium-weighted font. The
   /// row becomes taller in order to display the [helper] widget underneath
   /// [prefix] and [child]. If null, the row is shorter.
-  final Widget? Function(String error)? errorBuilder;
+  final Widget Function(BuildContext context, String error)? errorBuilder;
 
   /// Creates On/Off Cupertino switch field
   FormBuilderCupertinoSwitch({
@@ -372,7 +372,7 @@ class FormBuilderCupertinoSwitch extends FormBuilderField<bool> {
              error:
                  state.hasError
                      ? errorBuilder != null
-                         ? errorBuilder(state.errorText ?? '')
+                         ? errorBuilder(state.context, state.errorText ?? '')
                          : Text(state.errorText ?? '')
                      : null,
              helper: helper,
